@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scan-qr.css">
+    <title>Event Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"
+        defer></script>
+
+    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #DDE6ED;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/event">EMS | Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Event Management System</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body d-flex flex-column flex-lg-row p-3
+                p-lg-0">
+                    <ul class="navbar-nav justify-content-center flex-grow-1 pe-3
+                align-items-center fs-5">
+
+                        <!-- <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/event">Event</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/attendance">Attendance</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/usermngmt">Manage Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/qr">QR Code</a>
+                        </li>
+
+
+                    </ul>
+
+                    <div class="d-flex flex-column flex-lg-row
+              align-items-center gap-3">
+
+                        <a href="/logout" class="text-white text-decoration-none px-3 py-1 rounded-4"
+                            style="background-color: #27374D;">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>SCAN QR CODE</h1>
+    <div class="vid-container">
+        <div class="row">
+            <div class="box-vid">
+                <video id="preview">scanner</ideo>
+            </div>
+        </div>
+    </div>
+    <div id="response-container"></div>
+
+    <button id="show-input">
+        <div class="icon-txt-container">
+            <svg width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <g font-weight="400" fill="#fff">
+                  <path
+                    d="M3.994 1c-1.258.015-2.179-.030-2.931.385a1.88 1.88 0 0 0-.838.998C.06 2.822 0 3.343 0 4v8c0 .658.06 1.179.225 1.617.164.439.461.79.838.998.752.416 1.673.37 2.931.385h8.012c1.258-.014 2.179.03 2.932-.385a1.88 1.88 0 0 0 .838-.998c.164-.438.224-.96.224-1.617V4c0-.658-.06-1.178-.225-1.617-.005-.013-.012-.023-.017-.035l-.82.806c.037.23.062.499.062.846v8c0 .592-.063 1.006-.16 1.266-.098.26-.203.371-.387.472-.366.202-1.194.247-2.453.262H4c-1.259-.015-2.09-.06-2.455-.262-.183-.1-.287-.212-.385-.472C1.063 13.006 1 12.592 1 12V4c0-.592.063-1.006.16-1.266.098-.26.202-.371.385-.472C1.91 2.06 2.74 2.015 4 2h3.852l.982-1H3.998z"
+                    style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;shape-padding:0;isolation:auto;mix-blend-mode:normal;marker:none"
+                    color="#000" font-family="sans-serif" overflow="visible" />
+                  <path
+                    d="m11.238 0-.353.36-6.969 7.095-.03.045c-.061.099-.27.45-.583 1.088-.314.638-.7 1.51-1.012 2.492L2 12l.92-.291a18.163 18.163 0 0 0 2.492-1.012c.638-.313.987-.52 1.088-.584l.045-.029L14 2.762zM4.891 7.89l1.218 1.22-.177.175c.007-.005-.379.227-.961.514-.214.105-.536.222-.834.338l-.274-.274c.116-.298.233-.62.338-.834.287-.582.518-.966.514-.96zM4 12v1h10V7h-1v5z"
+                    style="line-height:125%;-inkscape-font-specification:Ubuntu;text-align:center" font-size="15"
+                    font-family="Ubuntu" letter-spacing="0" word-spacing="0" text-anchor="middle" />
+                </g>
+              </svg>                
+            <span class="lable">Input Key</span>
+        </div>
+    </button>
+
+
+    <button id="scan-instead">
+        <div class="icon-txt-container">
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon line-color">
+                <path d="M13 11V7h4v4Zm4 6v-2h-2v2ZM7 13v4h4v-4Zm0-6v2h2V7Z"
+                    style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2" />
+                <path d="M21 8V4a1 1 0 0 0-1-1h-4"
+                    style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2" />
+                <path data-name="primary" d="M16 21h4a1 1 0 0 0 1-1v-4M8 3H4a1 1 0 0 0-1 1v4m0 8v4a1 1 0 0 0 1 1h4"
+                    style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2" />
+            </svg>
+
+            <span class="lable">Scan QR</span>
+        </div>
+    </button>
+
+    <div id="input-container">
+        <div class="field-container">
+            <div class="search-field-container"><input type="text" class="input" id="input-field"
+                    placeholder="Enter Registration ID">
+            </div>
+        </div>
+
+        <button id="submit-key" class="key-submit-btn"">
+            <span class="front-btn">Submit</span>
+        </button>
+    </div>
+
+    <div class="popup" id="popup">
+        <h2 class="popup-header">Validate</h2>
+        <div id="qr-content"></div>
+        <div class="actions">
+        <button type="button" class="grant" id="grantBtn">Grant</button>
+        <button type="button" class="decline" id="decBtn">Decline</button>
+    </div>
+    </div>
+    <script src="scan-qr.js"></script>
+</body>
+<footer class="bg-light text-center">
+    <div class="text-center" style="background-color: rgba(0, 0, 0, 0.2); padding: 1%;">
+        © 2023 Copyright Bel Sorisso
+    </div>
+</footer>
+
+</html>

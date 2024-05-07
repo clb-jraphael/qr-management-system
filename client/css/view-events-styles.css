@@ -1,0 +1,98 @@
+/* For floating error display */
+#error-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FF5252;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+#error-msg {
+    margin: 0;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+#error-container button {
+    background-color: #FFFFFF; 
+    color: #FF5252; 
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-weight: bold;
+}
+
+
+/* For floating qr code display */
+#qr-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #64B5F6;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+#event-title {
+    margin: 0;
+    color: #FFFFFF;
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+
+p {
+    margin: 10px 0;
+    color: #FFFFFF;
+}
+
+p a {
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+#qr-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 15px;
+}
+
+#download-btn, #confirm-btn {
+    background-color: #FFFFFF;
+    color: #64B5F6;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+#download-btn {
+    text-decoration: none;
+}
+
+#confirm-btn {
+    background-color: #3a6c94;
+    color: #FFFFFF;
+}
+
+#download-btn:hover {
+    background-color: #f3f3f3;
+}
+
+#confirm-btn:hover {
+    background-color: #4b8cc2;
+}

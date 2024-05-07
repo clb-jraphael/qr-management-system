@@ -1,0 +1,18 @@
+.navbar{
+    background-color: #DDE6ED;
+}
+
+.form-signup {
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+.form-signup .form-group {
+    margin-bottom: 15px;
+    /* Added margin between form groups */
+}
+
+.form-signup input[type="submit"] {
+    width: 100%;
+    /* Make the submit button full width */
+}
